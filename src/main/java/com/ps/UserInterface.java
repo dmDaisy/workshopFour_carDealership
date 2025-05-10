@@ -16,7 +16,7 @@ public class UserInterface {
 
     public void display(){
 
-        int mainMenuCommand;
+        int mainMenuCommand = -1;
 
         do{
             System.out.println("\nWelcome to the dealership program");
@@ -174,8 +174,13 @@ public class UserInterface {
 
     // helper method to get user int input and consumes redundant \n
     private int getUserInt(){
+        while( ! scanner.hasNextInt()){
+            System.out.println("Invalid input, enter an integer: ");
+            scanner.nextLine(); // or scanner.next() ?
+        }
         int result = scanner.nextInt();
-        scanner.nextLine();
+        scanner.nextLine(); // consumes redundant \n, or scanner.next() ?
+
         return result;
     }
 
