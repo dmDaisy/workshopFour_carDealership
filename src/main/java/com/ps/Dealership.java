@@ -83,8 +83,11 @@ public class Dealership {
 
     public void removeVehicle(int vin){
         for(Vehicle v : inventory)
-            if(v.getVin() == vin)
-                System.out.println(inventory.remove(v)); // print info of removed vehicles
+            if(v.getVin() == vin){
+                System.out.println(v); // print info of removed vehicle
+                inventory.remove(v);
+                break;
+            }
     }
 
     public void removeVehicle(Vehicle vehicle){

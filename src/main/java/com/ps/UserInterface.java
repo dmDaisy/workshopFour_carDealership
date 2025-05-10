@@ -16,11 +16,10 @@ public class UserInterface {
 
     public void display(){
 
-        System.out.println("Welcome to the dealership program");
-
         int mainMenuCommand;
 
         do{
+            System.out.println("\nWelcome to the dealership program");
             System.out.println("1. Get by price");
             System.out.println("2. Get by make/model");
             System.out.println("3. Get by year");
@@ -33,7 +32,7 @@ public class UserInterface {
             System.out.println("0. Exit");
 
             System.out.print("Command: ");
-            mainMenuCommand = scanner.nextInt();
+            mainMenuCommand = getUserInt();
 
             switch(mainMenuCommand){
                 case 1:
@@ -154,18 +153,18 @@ public class UserInterface {
                 "\n" + v);
     }
 
-    // removes by vin only
+    // removes by vin only, removes 1 vehicle with each call
     private void processRemoveVehicleRequest(){
         System.out.println("Enter vehicle VIN: ");
         int vin = getUserInt();
-        System.out.println("The following vehicle(s) are removed: ");
+        System.out.println("The following vehicle is removed: ");
         dealership.removeVehicle(vin);
     }
 
     public static void displayVehicles(ArrayList<Vehicle> vehicles, String type){
-        System.out.println("\nPrinting the corresponding vehicles by: " + type);
+        System.out.println("\nPrinting the corresponding vehicle(s) by: " + type + "\n");
         for(Vehicle vehicle: vehicles){
-            System.out.println(vehicle);
+            System.out.print(vehicle);
         }
     }
 
