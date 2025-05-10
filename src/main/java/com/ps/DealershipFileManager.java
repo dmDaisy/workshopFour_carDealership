@@ -52,7 +52,7 @@ public class DealershipFileManager {
     public static void saveDealership(Dealership dealership){
 
         try {
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(TEST_FILE_NAME));
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(FILE_NAME, false));
 
             String firstLine = String.format("%s|%s|%s\n",
                     dealership.getName(),

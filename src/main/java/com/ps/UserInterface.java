@@ -63,6 +63,9 @@ public class UserInterface {
                     processRemoveVehicleRequest();
                     break;
                 case 0:
+                    System.out.println("Saving inventory to cvs file...");
+                    DealershipFileManager.saveDealership(dealership);
+                    System.out.println("Done. ");
                     System.out.println("Exiting...");
                     break;
                 default:
@@ -159,6 +162,7 @@ public class UserInterface {
         int vin = getUserInt();
         System.out.println("The following vehicle is removed: ");
         dealership.removeVehicle(vin);
+
     }
 
     public static void displayVehicles(ArrayList<Vehicle> vehicles, String type){
