@@ -52,7 +52,7 @@ Below are a few screenshots of the application in action:
 
 ### Home Screen
 
-![Screenshot 2025-05-09 at 9 44 42 PM](https://github.com/user-attachments/assets/63bc2b5b-7acb-4c16-8eb1-1c891ec64f39)
+![Screenshot 2025-05-09 at 11 05 59 PM](https://github.com/user-attachments/assets/3f7bec05-d060-43fe-bae0-bee079606fab)
 
 
 ### Search by features example 1
