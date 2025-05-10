@@ -1,12 +1,10 @@
-
 package com.ps;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class UserInterface {
     private Dealership dealership;
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     private void init(){
         dealership = DealershipFileManager.getDealership();
@@ -88,39 +86,94 @@ public class UserInterface {
         ArrayList<Vehicle> filteredVehicles = dealership.vehiclesByPrice(min, max);
 
         // Display vehicles with for loop
-        displayVehicles(filteredVehicles);
+        displayVehicles(filteredVehicles, "price");
     }
     private void processGetByMakeModelRequest(){
+        System.out.println("Enter vehicle make: ");
+        String make = scanner.nextLine().trim();
+        System.out.println("Enter vehicle model: ");
+        String model = scanner.nextLine().trim();
 
+        displayVehicles(dealership.vehiclesByMakeModel(make, model), "make and model");
     }
     private void processGetByYearRequest(){
+        System.out.println("Enter starting year: ");
+        int min = scanner.nextInt();
+        scanner.nextLine(); // consumes the redundant line
+        System.out.println("Enter ending year: ");
+        int max = scanner.nextInt();
+        scanner.nextLine();
 
+        displayVehicles(dealership.vehiclesByYear(min, max), "year");
     }
     private void processGetByColorRequest(){
-
+        System.out.println("Enter color: ");
+        String color = scanner.nextLine();
+        displayVehicles(dealership.vehiclesByColor(color), "color");
     }
     private void processGetByMileageRequest(){
+        System.out.println("Enter min mileage: ");
+        int min = getUserInt();
+        System.out.println("Enter max mileage: ");
+        int max = getUserInt();
 
+        displayVehicles(dealership.vehiclesByMileage(min, max), "mileage");
     }
+
     private void processGetByVehicleTypeRequest(){
-
+        System.out.println("Enter type: ");
+        String type = scanner.nextLine();
+        displayVehicles(dealership.vehiclesByType(type), "type");
     }
+
     private void processGetAllVehiclesRequest(){
-        ArrayList<Vehicle> vehicles = dealership.getAllVehicles();
-        System.out.println("---------Printing all vehicles-----------");
-        displayVehicles(vehicles);
+        displayVehicles(dealership.getAllVehicles(), "all vehicles");
     }
+
     private void processAddVehicleRequest(){
+        System.out.println("Enter vehicle VIN: ");
+        int vin = getUserInt();
+        System.out.println("Enter vehicle year: ");
+        int year = getUserInt();
+        System.out.println("Enter vehicle make: ");
+        String make = scanner.nextLine();
+        System.out.println("Enter vehicle model: ");
+        String model = scanner.nextLine();
+        System.out.println("Enter vehicle type: ");
+        String type = scanner.nextLine();
+        System.out.println("Enter vehicle color: ");
+        String color = scanner.nextLine();
+        System.out.println("Enter vehicle mileage: ");
+        int mileage = getUserInt();
+        System.out.println("Enter vehicle price: ");
+        double price = scanner.nextDouble();
 
+        Vehicle v = new Vehicle(vin, year, make, model, type, color, mileage, price);
+        dealership.addVehicle(v);
+        System.out.println("The following vehicle is added: " +
+                "\n" + v);
     }
+
+    // removes by vin only
     private void processRemoveVehicleRequest(){
-
+        System.out.println("Enter vehicle VIN: ");
+        int vin = getUserInt();
+        System.out.println("The following vehicle(s) are removed: ");
+        dealership.removeVehicle(vin);
     }
 
-    public static void displayVehicles(ArrayList<Vehicle> vehicles){
+    public static void displayVehicles(ArrayList<Vehicle> vehicles, String type){
+        System.out.println("\nPrinting the corresponding vehicles by: " + type);
         for(Vehicle vehicle: vehicles){
-            System.out.print(vehicle);
+            System.out.println(vehicle);
         }
+    }
+
+    // helper method to get user int input and consumes redundant \n
+    private int getUserInt(){
+        int result = scanner.nextInt();
+        scanner.nextLine();
+        return result;
     }
 
 }

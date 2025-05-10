@@ -4,10 +4,15 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class DealershipFileManager {
+
+    private static final String FILE_NAME = "inventory.csv";
+    private static final String TEST_FILE_NAME = "test_inventory.csv";
+
+
     public static Dealership getDealership(){
 
         try{
-            BufferedReader bufferedReader = new BufferedReader(new FileReader("inventory.csv"));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(FILE_NAME));
 
             String input = bufferedReader.readLine(); // First line of the file > "D & B Used Cars|111 Old Benbrook Rd|817-555-5555"
 
@@ -42,10 +47,12 @@ public class DealershipFileManager {
             return null;
         }
     }
+
+    // saves all dealership info and entries to the test csv file
     public static void saveDealership(Dealership dealership){
 
         try {
-            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("inventory_test.csv"));
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(TEST_FILE_NAME));
 
             String firstLine = String.format("%s|%s|%s\n",
                     dealership.getName(),
