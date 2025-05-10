@@ -183,5 +183,4 @@ public class UserInterface {
 
         return result;
     }
-
 }

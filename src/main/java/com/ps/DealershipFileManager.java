@@ -7,8 +7,7 @@ public class DealershipFileManager {
 
     private static final String FILE_NAME = "inventory.csv";
     private static final String TEST_FILE_NAME = "test_inventory.csv";
-
-
+    
     public static Dealership getDealership(){
 
         try{
