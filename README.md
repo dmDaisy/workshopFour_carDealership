@@ -86,10 +86,10 @@ Besides, it's also reponsible for consuming the redundant "\n" after `scanner.ne
     private int getUserInt(){
         while( ! scanner.hasNextInt()){
             System.out.println("Invalid input, enter an integer: ");
-            scanner.nextLine(); // or scanner.next() ?
+            scanner.nextLine(); // scanner.next()?
         }
         int result = scanner.nextInt();
-        scanner.nextLine(); // consumes redundant \n, or scanner.next() ?
+        scanner.nextLine(); // consumes redundant \n
 
         return result;
     }
